@@ -212,9 +212,14 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             height: 250px;
             opacity: 0;
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: both;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
             cursor: pointer;
+        }
+        
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .gallery-item img {
@@ -246,6 +251,14 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .friend-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .friend-card:hover {
@@ -461,30 +474,6 @@
         .lightbox-button:hover {
             color: #d4af37;
             background: rgba(0, 0, 0, 0.7);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .social-links {
-            margin-bottom: 20px;
-        }
-        
-        .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 20px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: #d4af37;
         }
         
         /* Animations */
@@ -729,7 +718,7 @@
                     <div class="friend-content">
                         <h3 class="friend-title">Aswand</h3>
                         <p class="friend-desc">Йога и развитие. Санкт-Петербург</p>
-                        <a href="https://www.aswand.ru/" class="friend-link">Посетить сайт</a>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
                 
@@ -737,15 +726,15 @@
                     <div class="friend-content">
                         <h3 class="friend-title">ConArt</h3>
                         <p class="friend-desc">Куда пойти в СПб. Афиша мероприятий</p>
-                        <a href="https://conartwheretogospb.wixsite.com/conart" class="friend-link">Посетить сайт</a>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
                 
                 <div class="friend-card">
                     <div class="friend-content">
-                        <h3 class="friend-title">Прогулки по Неве и Финскому заливу</h3>
-                        <p class="friend-desc">Аренда яхт и катеров в Санкт-Петербурге. Санкт-Петербург</p>
-                        <a href="https://ship-spb.onrender.com/index.html" class="friend-link">Посетить сайт</a>
+                        <h3 class="friend-title">Albina Kedi Design</h3>
+                        <p class="friend-desc">Дизайн одежды и креатив. Санкт-Петербург</p>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
                 
@@ -753,15 +742,15 @@
                     <div class="friend-content">
                         <h3 class="friend-title">Abaris Handicraft</h3>
                         <p class="friend-desc">Создание музыкальных инструментов, ремонт. СПБ</p>
-                        <a href="https://abarisaristeev.wixsite.com/welcome" class="friend-link">Посетить сайт</a>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
                 
                 <div class="friend-card">
                     <div class="friend-content">
-                        <h3 class="friend-title">Leh Ladakh, Tibet</h3>
+                        <h3 class="friend-title">Leh Ladakh</h3>
                         <p class="friend-desc">Путешествия и приключения</p>
-                        <a href="https://leh-ladakh.onrender.com/" class="friend-link">Посетить сайт</a>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
                 
@@ -769,7 +758,7 @@
                     <div class="friend-content">
                         <h3 class="friend-title">Ka-Min SPb</h3>
                         <p class="friend-desc">Строительство барбекю, каминов, ремонт. Санкт-Петербург</p>
-                        <a href="https://kamin-spb.onrender.com/" class="friend-link">Посетить сайт</a>
+                        <a href="#" class="friend-link">Посетить сайт</a>
                     </div>
                 </div>
             </div>
@@ -894,7 +883,47 @@
             }
         });
 
-        // Animate gallery items with flying effect and add lightbox functionality
+        // Scroll animation functionality
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.gallery-item, .friend-card');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // For gallery items, add the flying animation with random values
+                        if (entry.target.classList.contains('gallery-item')) {
+                            const randX = getRandomValue(0.5, 1.5);
+                            const randY = getRandomValue(0.5, 1.5);
+                            const randRotate = getRandomValue(-180, 180);
+                            
+                            entry.target.style.setProperty('--randX', randX);
+                            entry.target.style.setProperty('--randY', randY);
+                            entry.target.style.setProperty('--randRotate', randRotate);
+                            
+                            entry.target.style.animation = `flyIn 2.5s forwards`;
+                        }
+                        
+                        // Stop observing after animation is triggered
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all animated elements
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             
@@ -907,25 +936,14 @@
                     caption: img.dataset.caption
                 });
                 
-                // Set random values for animation
-                const randX = getRandomValue(0.5, 1.5);
-                const randY = getRandomValue(0.5, 1.5);
-                const randRotate = getRandomValue(-180, 180);
-                const delay = index * 200; // Stagger the animations
-                
-                // Apply custom properties
-                item.style.setProperty('--randX', randX);
-                item.style.setProperty('--randY', randY);
-                item.style.setProperty('--randRotate', randRotate);
-                
-                // Apply animation with delay
-                item.style.animation = `flyIn 2.5s ${delay}ms forwards`;
-                
                 // Add click event for lightbox
                 item.addEventListener('click', function() {
                     openLightbox(img.src, img.alt, img.dataset.caption, index);
                 });
             });
+            
+            // Initialize scroll animations
+            initScrollAnimations();
             
             // Simple form validation
             document.getElementById('contactForm').addEventListener('submit', function(e) {
