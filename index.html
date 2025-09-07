@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albina Kedi - Дизайнер и Художник | Санкт-Петербург</title>
+    <meta name="description" content="Albina Kedi - дизайнер и художник из Санкт-Петербурга. Офис и арт-пространство в Art-Muse.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/sp6qF2Vy/Whats-App-Image-2025-09-07-at-05-03-36.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #d4af37;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn:hover {
+            background-color: #bf9b30;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* About section */
+        .about {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d4af37;
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(10deg);
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Portfolio section */
+        .portfolio {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 250px;
+            opacity: 0;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Floating phone button */
+        .floating-phone {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 175, 55, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+            animation: rotate 6s infinite linear, pulse 2s infinite alternate;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .floating-phone:hover {
+            background-color: rgba(212, 175, 55, 0.9);
+            transform: scale(1.1);
+            animation: none;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .lightbox-close:hover {
+            color: #d4af37;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #d4af37;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(0.95); opacity: 0.8; }
+            to { transform: scale(1.05); opacity: 1; }
+        }
+        
+        @keyframes flyIn {
+            0% {
+                opacity: 0;
+                transform: translate(calc(-100vw * var(--randX)), calc(-100vh * var(--randY))) rotate(calc(var(--randRotate) * 1deg));
+            }
+            70% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .floating-phone {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating phone button -->
+    <a href="tel:+79650643261" class="floating-phone">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Albina Kedi</div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#art-space">Арт-пространство</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Albina Kedi</h1>
+                    <p>Дизайнер и художник | Санкт-Петербург</p>
+                    <a href="#portfolio" class="btn">Смотреть работы</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Я - Albina Kedi, дизайнер и художник из Санкт-Петербурга. Моя работа сочетает в себе современные тенденции дизайна с классическим художественным образованием.</p>
+                    <p>Имею собственный офис и арт-пространство в Art-Muse, где создаю, провожу выставки и collaborate с другими творческими личностями.</p>
+                    <p>Мой подход к дизайну - это внимание к деталям, глубокое понимание потребностей клиента и создание эстетически совершенных и функциональных решений.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.ibb.co/b5G3Fg6P/Whats-App-Image-2025-09-07-at-05-03-36-1.jpg" alt="Albina Kedi - дизайнер и художник из Санкт-Петербурга">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/XZYPgvbZ/Whats-App-Image-2025-09-07-at-05-03-37.jpg" alt="Дизайнерская работа Albina Kedi 1" data-caption="Дизайнерская работа Albina Kedi 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/ym0LRbJ8/Whats-App-Image-2025-09-07-at-05-03-37-1.jpg" alt="Дизайнерская работа Albina Kedi 2" data-caption="Дизайнерская работа Albina Kedi 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/Q3hzs0zH/Whats-App-Image-2025-09-07-at-05-03-37-2.jpg" alt="Дизайнерская работа Albina Kedi 3" data-caption="Дизайнерская работа Albina Kedi 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/jZgF5hq9/Whats-App-Image-2025-09-07-at-05-03-37-3.jpg" alt="Дизайнерская работа Albina Kedi 4" data-caption="Дизайнерская работа Albina Kedi 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/pvNzWjd4/Whats-App-Image-2025-09-07-at-05-03-37-4.jpg" alt="Дизайнерская работа Albina Kedi 5" data-caption="Дизайнерская работа Albina Kedi 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/35r3n8h5/Whats-App-Image-2025-09-07-at-05-03-38.jpg" alt="Дизайнерская работа Albina Kedi 6" data-caption="Дизайнерская работа Albina Kedi 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Space Section -->
+    <section id="art-space" class="about">
+        <div class="container">
+            <h2 class="section-title">Арт-пространство</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://i.ibb.co/sp6qF2Vy/Whats-App-Image-2025-09-07-at-05-03-36.jpg" alt="Арт-пространство Albina Kedi в Санкт-Петербурге">
+                </div>
+                <div class="about-text">
+                    <p>Мое арт-пространство расположено в культурном центре Санкт-Петербурга. Это место, где рождаются творческие идеи, проходят выставки, мастер-классы и встречи с ценителями искусства.</p>
+                    <p>Пространство оборудовано всем необходимым для работы и проведения мероприятий. Здесь царит атмосфера, способствующая творчеству и вдохновению.</p>
+                    <p>Если вы хотите посетить пространство или организовать мероприятие, свяжитесь со мной для уточнения деталей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Свяжитесь со мной</h3>
+                    <p><strong>Адрес:</strong> Санкт-Петербург, Art-Muse</p>
+                    <p><strong>Email:</strong> info@albinakedi.com</p>
+                    <p><strong>Телефон:</strong> <a href="tel:+79650643261" style="color: #333; text-decoration: none;">+7 (965) 064-32-61</a></p>
+                    <p><strong>Часы работы:</strong> Пн-Пт: 10:00 - 19:00</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <textarea placeholder="Ваше сообщение" required></textarea>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+            <p>&copy; 2025 Albina Kedi. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to generate random values for animation
+        function getRandomValue(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        
+        // Function to open lightbox
+        function openLightbox(imageSrc, imageAlt, caption) {
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageAlt;
+            lightboxCaption.textContent = caption;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+        
+        // Function to close lightbox
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+        
+        // Close lightbox when clicking on close button
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Animate gallery items with flying effect and add lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach((item, index) => {
+                // Set random values for animation
+                const randX = getRandomValue(0.5, 1.5);
+                const randY = getRandomValue(0.5, 1.5);
+                const randRotate = getRandomValue(-180, 180);
+                const delay = index * 200; // Stagger the animations
+                
+                // Apply custom properties
+                item.style.setProperty('--randX', randX);
+                item.style.setProperty('--randY', randY);
+                item.style.setProperty('--randRotate', randRotate);
+                
+                // Apply animation with delay
+                item.style.animation = `flyIn 2.5s ${delay}ms forwards`;
+                
+                // Add click event for lightbox
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    openLightbox(img.src, img.alt, img.dataset.caption);
+                });
+            });
+            
+            // Simple form validation
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Спасибо за ваше сообщение! Я свяжусь с вами в ближайшее время.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
