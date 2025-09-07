@@ -212,14 +212,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             height: 250px;
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
             cursor: pointer;
-        }
-        
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .gallery-item img {
@@ -251,14 +246,6 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .friend-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .friend-card:hover {
@@ -474,6 +461,30 @@
         .lightbox-button:hover {
             color: #d4af37;
             background: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #d4af37;
         }
         
         /* Animations */
@@ -883,47 +894,7 @@
             }
         });
 
-        // Scroll animation functionality
-        function initScrollAnimations() {
-            const animatedElements = document.querySelectorAll('.gallery-item, .friend-card');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.2
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // For gallery items, add the flying animation with random values
-                        if (entry.target.classList.contains('gallery-item')) {
-                            const randX = getRandomValue(0.5, 1.5);
-                            const randY = getRandomValue(0.5, 1.5);
-                            const randRotate = getRandomValue(-180, 180);
-                            
-                            entry.target.style.setProperty('--randX', randX);
-                            entry.target.style.setProperty('--randY', randY);
-                            entry.target.style.setProperty('--randRotate', randRotate);
-                            
-                            entry.target.style.animation = `flyIn 2.5s forwards`;
-                        }
-                        
-                        // Stop observing after animation is triggered
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all animated elements
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Initialize everything when DOM is loaded
+        // Animate gallery items with flying effect and add lightbox functionality
         document.addEventListener('DOMContentLoaded', function() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             
@@ -936,14 +907,25 @@
                     caption: img.dataset.caption
                 });
                 
+                // Set random values for animation
+                const randX = getRandomValue(0.5, 1.5);
+                const randY = getRandomValue(0.5, 1.5);
+                const randRotate = getRandomValue(-180, 180);
+                const delay = index * 200; // Stagger the animations
+                
+                // Apply custom properties
+                item.style.setProperty('--randX', randX);
+                item.style.setProperty('--randY', randY);
+                item.style.setProperty('--randRotate', randRotate);
+                
+                // Apply animation with delay
+                item.style.animation = `flyIn 2.5s ${delay}ms forwards`;
+                
                 // Add click event for lightbox
                 item.addEventListener('click', function() {
                     openLightbox(img.src, img.alt, img.dataset.caption, index);
                 });
             });
-            
-            // Initialize scroll animations
-            initScrollAnimations();
             
             // Simple form validation
             document.getElementById('contactForm').addEventListener('submit', function(e) {
