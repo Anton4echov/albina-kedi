@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albina Kedi - Дизайнер и Художник | Санкт-Петербург</title>
-    <meta name="description" content="Albina Kedi - дизайнер и художник из Санкт-Петербурга. Офис и арт-пространство в Art-Muse.">
+    <title>Albina Kedi - Дизайнер одежды и моды | Санкт-Петербург</title>
+    <meta name="description" content="Albina Kedi - дизайнер одежды и моды из Санкт-Петербурга. Создание уникальных коллекций, индивидуальный пошив, арт-пространство в Art-Muse.">
+    <meta name="keywords" content="дизайнер одежды СПб, дизайнер одежды Санкт-Петербург, модный дизайнер, создание коллекций одежды, пошив одежды на заказ, fashion designer SPb">
+    
+    <!-- Social Media Preview -->
+    <meta property="og:title" content="Albina Kedi - Дизайнер одежды и моды | Санкт-Петербург">
+    <meta property="og:description" content="Создание уникальных коллекций одежды, индивидуальный пошив, арт-пространство в Art-Muse.">
+    <meta property="og:image" content="https://i.ibb.co/XZYPgvbZ/Whats-App-Image-2025-09-07-at-05-03-37.jpg">
+    <meta property="og:url" content="https://albinakedi.com">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Albina Kedi - Дизайнер одежды и моды | Санкт-Петербург">
+    <meta name="twitter:description" content="Создание уникальных коллекций одежды, индивидуальный пошив, арт-пространство в Art-Muse.">
+    <meta name="twitter:image" content="https://i.ibb.co/XZYPgvbZ/Whats-App-Image-2025-09-07-at-05-03-37.jpg">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base styles */
@@ -30,23 +44,27 @@
         
         /* Header styles */
         header {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            width: 100%;
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: #d4af37;
         }
@@ -57,7 +75,7 @@
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
         
         nav ul li a {
@@ -65,6 +83,7 @@
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 15px;
         }
         
         nav ul li a:hover {
@@ -82,7 +101,7 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            margin-top: 80px;
+            margin-top: 70px;
         }
         
         .hero-content h1 {
@@ -107,6 +126,9 @@
             font-weight: bold;
             transition: all 0.3s;
             animation: fadeIn 2s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
         
         .btn:hover {
@@ -206,6 +228,64 @@
             transform: scale(1.1);
         }
         
+        /* Friends section */
+        .friends {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .friends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .friend-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .friend-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .friend-content {
+            padding: 20px;
+        }
+        
+        .friend-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .friend-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .friend-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #d4af37;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .friend-link:hover {
+            background-color: #bf9b30;
+        }
+        
         /* Contact section */
         .contact {
             padding: 100px 0;
@@ -244,6 +324,28 @@
             resize: vertical;
         }
         
+        /* Submit button with floating style */
+        .submit-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: rgba(212, 175, 55, 0.7);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .submit-btn:hover {
+            background-color: rgba(212, 175, 55, 0.9);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        
         /* Floating phone button */
         .floating-phone {
             position: fixed;
@@ -280,8 +382,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
             justify-content: center;
             align-items: center;
         }
@@ -295,22 +397,33 @@
         .lightbox-content img {
             width: 100%;
             height: auto;
+            max-height: 80vh;
+            object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
         }
         
         .lightbox-close {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
             color: white;
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
             transition: color 0.3s;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .lightbox-close:hover {
             color: #d4af37;
+            background: rgba(0, 0, 0, 0.7);
         }
         
         .lightbox-caption {
@@ -318,6 +431,36 @@
             text-align: center;
             margin-top: 15px;
             font-size: 18px;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 10001;
+        }
+        
+        .lightbox-button {
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-button:hover {
+            color: #d4af37;
+            background: rgba(0, 0, 0, 0.7);
         }
         
         /* Footer */
@@ -405,24 +548,28 @@
             }
             
             nav ul {
-                margin-top: 20px;
+                margin-top: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
             nav ul li {
-                margin: 10px;
+                margin: 8px;
             }
             
             .hero-content h1 {
                 font-size: 36px;
             }
             
+            .hero-content p {
+                font-size: 18px;
+            }
+            
             .about-content, .contact-content {
                 flex-direction: column;
             }
             
-            .gallery {
+            .gallery, .friends-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
@@ -438,6 +585,23 @@
                 max-width: 95%;
                 max-height: 80%;
             }
+            
+            .lightbox-button {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-close {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+                top: -45px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -449,6 +613,14 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
+        <div class="lightbox-nav">
+            <div class="lightbox-button" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="lightbox-button" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
         <div class="lightbox-content">
             <span class="lightbox-close" id="lightboxClose">&times;</span>
             <img id="lightboxImage" src="" alt="">
@@ -464,8 +636,9 @@
                 <nav>
                     <ul>
                         <li><a href="#about">Обо мне</a></li>
-                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#portfolio">Коллекции</a></li>
                         <li><a href="#art-space">Арт-пространство</a></li>
+                        <li><a href="#friends">Друзья</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
                 </nav>
@@ -479,8 +652,8 @@
             <div class="hero-content">
                 <div>
                     <h1>Albina Kedi</h1>
-                    <p>Дизайнер и художник | Санкт-Петербург</p>
-                    <a href="#portfolio" class="btn">Смотреть работы</a>
+                    <p>Дизайнер одежды и моды | Санкт-Петербург</p>
+                    <a href="#portfolio" class="btn">Смотреть коллекции</a>
                 </div>
             </div>
         </div>
@@ -492,12 +665,12 @@
             <h2 class="section-title">Обо мне</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Я - Albina Kedi, дизайнер и художник из Санкт-Петербурга. Моя работа сочетает в себе современные тенденции дизайна с классическим художественным образованием.</p>
-                    <p>Имею собственный офис и арт-пространство в Art-Muse, где создаю, провожу выставки и collaborate с другими творческими личностями.</p>
-                    <p>Мой подход к дизайну - это внимание к деталям, глубокое понимание потребностей клиента и создание эстетически совершенных и функциональных решений.</p>
+                    <p>Я - Albina Kedi, дизайнер одежды из Санкт-Петербурга. Специализируюсь на создании уникальных коллекций одежды и индивидуальном пошиве.</p>
+                    <p>Имею собственный офис и арт-пространство в Art-Muse, где создаю новые модели, провожу показы и collaborate с другими творческими личностями в мире моды.</p>
+                    <p>Мой подход к дизайну одежды - это сочетание современных тенденций с классическим кроем, внимание к деталям и качественным материалам.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.ibb.co/b5G3Fg6P/Whats-App-Image-2025-09-07-at-05-03-36-1.jpg" alt="Albina Kedi - дизайнер и художник из Санкт-Петербурга">
+                    <img src="https://i.ibb.co/b5G3Fg6P/Whats-App-Image-2025-09-07-at-05-03-36-1.jpg" alt="Albina Kedi - дизайнер одежды из Санкт-Петербурга">
                 </div>
             </div>
         </div>
@@ -506,25 +679,25 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Портфолио</h2>
+            <h2 class="section-title">Коллекции</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/XZYPgvbZ/Whats-App-Image-2025-09-07-at-05-03-37.jpg" alt="Дизайнерская работа Albina Kedi 1" data-caption="Дизайнерская работа Albina Kedi 1">
+                    <img src="https://i.ibb.co/XZYPgvbZ/Whats-App-Image-2025-09-07-at-05-03-37.jpg" alt="Коллекция одежды от Albina Kedi 1" data-caption="Коллекция одежды от Albina Kedi 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/ym0LRbJ8/Whats-App-Image-2025-09-07-at-05-03-37-1.jpg" alt="Дизайнерская работа Albina Kedi 2" data-caption="Дизайнерская работа Albina Kedi 2">
+                    <img src="https://i.ibb.co/ym0LRbJ8/Whats-App-Image-2025-09-07-at-05-03-37-1.jpg" alt="Коллекция одежды от Albina Kedi 2" data-caption="Коллекция одежды от Albina Kedi 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/Q3hzs0zH/Whats-App-Image-2025-09-07-at-05-03-37-2.jpg" alt="Дизайнерская работа Albina Kedi 3" data-caption="Дизайнерская работа Albina Kedi 3">
+                    <img src="https://i.ibb.co/Q3hzs0zH/Whats-App-Image-2025-09-07-at-05-03-37-2.jpg" alt="Коллекция одежды от Albina Kedi 3" data-caption="Коллекция одежды от Albina Kedi 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/jZgF5hq9/Whats-App-Image-2025-09-07-at-05-03-37-3.jpg" alt="Дизайнерская работа Albina Kedi 4" data-caption="Дизайнерская работа Albina Kedi 4">
+                    <img src="https://i.ibb.co/jZgF5hq9/Whats-App-Image-2025-09-07-at-05-03-37-3.jpg" alt="Коллекция одежды от Albina Kedi 4" data-caption="Коллекция одежды от Albina Kedi 4">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/pvNzWjd4/Whats-App-Image-2025-09-07-at-05-03-37-4.jpg" alt="Дизайнерская работа Albina Kedi 5" data-caption="Дизайнерская работа Albina Kedi 5">
+                    <img src="https://i.ibb.co/pvNzWjd4/Whats-App-Image-2025-09-07-at-05-03-37-4.jpg" alt="Коллекция одежды от Albina Kedi 5" data-caption="Коллекция одежды от Albina Kedi 5">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.ibb.co/35r3n8h5/Whats-App-Image-2025-09-07-at-05-03-38.jpg" alt="Дизайнерская работа Albina Kedi 6" data-caption="Дизайнерская работа Albina Kedi 6">
+                    <img src="https://i.ibb.co/35r3n8h5/Whats-App-Image-2025-09-07-at-05-03-38.jpg" alt="Коллекция одежды от Albina Kedi 6" data-caption="Коллекция одежды от Albina Kedi 6">
                 </div>
             </div>
         </div>
@@ -539,9 +712,65 @@
                     <img src="https://i.ibb.co/sp6qF2Vy/Whats-App-Image-2025-09-07-at-05-03-36.jpg" alt="Арт-пространство Albina Kedi в Санкт-Петербурге">
                 </div>
                 <div class="about-text">
-                    <p>Мое арт-пространство расположено в культурном центре Санкт-Петербурга. Это место, где рождаются творческие идеи, проходят выставки, мастер-классы и встречи с ценителями искусства.</p>
-                    <p>Пространство оборудовано всем необходимым для работы и проведения мероприятий. Здесь царит атмосфера, способствующая творчеству и вдохновению.</p>
-                    <p>Если вы хотите посетить пространство или организовать мероприятие, свяжитесь со мной для уточнения деталей.</p>
+                    <p>Мое арт-пространство расположено в культурном центре Санкт-Петербурга. Это место, где рождаются новые коллекции одежды, проходят показы, мастер-классы по дизайну и встречи с ценителями моды.</p>
+                    <p>Пространство оборудовано всем необходимым для создания одежды - от проектирования до пошива. Здесь царит атмосфера, способствующая творчеству и вдохновению.</p>
+                    <p>Если вы хотите посетить пространство, заказать индивидуальный пошив или организовать мероприятие, свяжитесь со мной для уточнения деталей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friends Section -->
+    <section id="friends" class="friends">
+        <div class="container">
+            <h2 class="section-title">Друзья и партнеры</h2>
+            <div class="friends-grid">
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">Aswand</h3>
+                        <p class="friend-desc">Йога и развитие. Санкт-Петербург</p>
+                        <a href="https://www.aswand.ru/" class="friend-link">Посетить сайт</a>
+                    </div>
+                </div>
+                
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">ConArt</h3>
+                        <p class="friend-desc">Куда пойти в СПб. Афиша мероприятий</p>
+                        <a href="https://conartwheretogospb.wixsite.com/conart" class="friend-link">Посетить сайт</a>
+                    </div>
+                </div>
+                
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">Прогулки по Неве и Финскому заливу</h3>
+                        <p class="friend-desc">Аренда яхт и катеров в Санкт-Петербурге. Санкт-Петербург</p>
+                        <a href="https://ship-spb.onrender.com/index.html" class="friend-link">Посетить сайт</a>
+                    </div>
+                </div>
+                
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">Abaris Handicraft</h3>
+                        <p class="friend-desc">Создание музыкальных инструментов, ремонт. СПБ</p>
+                        <a href="https://abarisaristeev.wixsite.com/welcome" class="friend-link">Посетить сайт</a>
+                    </div>
+                </div>
+                
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">Leh Ladakh, Tibet</h3>
+                        <p class="friend-desc">Путешествия и приключения</p>
+                        <a href="https://leh-ladakh.onrender.com/" class="friend-link">Посетить сайт</a>
+                    </div>
+                </div>
+                
+                <div class="friend-card">
+                    <div class="friend-content">
+                        <h3 class="friend-title">Ka-Min SPb</h3>
+                        <p class="friend-desc">Строительство барбекю, каминов, ремонт. Санкт-Петербург</p>
+                        <a href="https://kamin-spb.onrender.com/" class="friend-link">Посетить сайт</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -558,13 +787,14 @@
                     <p><strong>Email:</strong> info@albinakedi.com</p>
                     <p><strong>Телефон:</strong> <a href="tel:+79650643261" style="color: #333; text-decoration: none;">+7 (965) 064-32-61</a></p>
                     <p><strong>Часы работы:</strong> Пн-Пт: 10:00 - 19:00</p>
+                    <p><strong>Услуги:</strong> дизайн одежды, создание коллекций, индивидуальный пошив, консультации</p>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <input type="text" placeholder="Ваше имя" required>
                         <input type="email" placeholder="Ваш email" required>
                         <textarea placeholder="Ваше сообщение" required></textarea>
-                        <button type="submit" class="btn">Отправить сообщение</button>
+                        <button type="submit" class="submit-btn">Отправить сообщение</button>
                     </form>
                 </div>
             </div>
@@ -580,7 +810,7 @@
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
             </div>
-            <p>&copy; 2025 Albina Kedi. Все права защищены.</p>
+            <p>&copy; 2025 Albina Kedi. Дизайнер одежды | Санкт-Петербург</p>
         </div>
     </footer>
 
@@ -595,9 +825,15 @@
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxCaption = document.getElementById('lightboxCaption');
         const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        
+        let currentImageIndex = 0;
+        const galleryImages = [];
         
         // Function to open lightbox
-        function openLightbox(imageSrc, imageAlt, caption) {
+        function openLightbox(imageSrc, imageAlt, caption, index) {
+            currentImageIndex = index;
             lightboxImage.src = imageSrc;
             lightboxImage.alt = imageAlt;
             lightboxCaption.textContent = caption;
@@ -611,8 +847,34 @@
             document.body.style.overflow = 'auto'; // Enable scrolling
         }
         
+        // Function to navigate to next image
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateLightboxImage();
+        }
+        
+        // Function to navigate to previous image
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
+        
+        // Function to update lightbox image
+        function updateLightboxImage() {
+            const image = galleryImages[currentImageIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCaption.textContent = image.caption;
+        }
+        
         // Close lightbox when clicking on close button
         lightboxClose.addEventListener('click', closeLightbox);
+        
+        // Navigate to next image
+        lightboxNext.addEventListener('click', nextImage);
+        
+        // Navigate to previous image
+        lightboxPrev.addEventListener('click', prevImage);
         
         // Close lightbox when clicking outside the image
         lightbox.addEventListener('click', function(e) {
@@ -625,6 +887,10 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
             }
         });
 
@@ -632,7 +898,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             
+            // Store gallery images data
             galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                galleryImages.push({
+                    src: img.src,
+                    alt: img.alt,
+                    caption: img.dataset.caption
+                });
+                
                 // Set random values for animation
                 const randX = getRandomValue(0.5, 1.5);
                 const randY = getRandomValue(0.5, 1.5);
@@ -649,8 +923,7 @@
                 
                 // Add click event for lightbox
                 item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    openLightbox(img.src, img.alt, img.dataset.caption);
+                    openLightbox(img.src, img.alt, img.dataset.caption, index);
                 });
             });
             
