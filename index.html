@@ -347,14 +347,11 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.4);
         }
         
-        /* Floating phone button */
-        .floating-phone {
+        /* Floating buttons */
+        .floating-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
             width: 60px;
             height: 60px;
-            background-color: rgba(212, 175, 55, 0.7);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -364,15 +361,32 @@
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 999;
-            animation: rotate 6s infinite linear, pulse 2s infinite alternate;
             transition: all 0.3s;
             backdrop-filter: blur(5px);
+            animation: pulse 2s infinite alternate;
         }
         
-        .floating-phone:hover {
-            background-color: rgba(212, 175, 55, 0.9);
+        .floating-btn:hover {
             transform: scale(1.1);
             animation: none;
+        }
+        
+        .floating-phone {
+            bottom: 30px;
+            right: 30px;
+            background-color: rgba(212, 175, 55, 0.7);
+        }
+        
+        .floating-pdf {
+            bottom: 100px;
+            right: 30px;
+            background-color: rgba(52, 152, 219, 0.8); /* Blue */
+        }
+        
+        .floating-music {
+            bottom: 170px;
+            right: 30px;
+            background-color: rgba(231, 76, 60, 0.8); /* Red */
         }
         
         /* Lightbox */
@@ -574,24 +588,26 @@
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
-            .floating-phone {
-                bottom: 20px;
-                right: 20px;
+            .floating-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
             }
-
-                    .floating-pdf {
-            bottom: 100px;
-            right: 30px;
-            background-color: rgba(52, 152, 219, 0.8); /* Blue */
-        }
-        .floating-music {
-            bottom: 170px;
-            right: 30px;
-            background-color: rgba(231, 76, 60, 0.8); /* Red */
-        }
+            
+            .floating-phone {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-pdf {
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .floating-music {
+                bottom: 140px;
+                right: 20px;
+            }
             
             .lightbox-content {
                 max-width: 95%;
@@ -619,20 +635,21 @@
 </head>
 <body>
     <!-- Floating phone button -->
-    <a href="tel:+79650643261" class="floating-phone">
+    <a href="tel:+79650643261" class="floating-btn floating-phone" title="Позвонить">
         <i class="fas fa-phone"></i>
     </a>
 
- <a href="https://albina-kedi-pdf.onrender.com/scroll.html"
+    <!-- Floating PDF button -->
+    <a href="https://albina-kedi-pdf.onrender.com/scroll.html"
      class="floating-btn floating-pdf" target="_blank" title="PDF Scroll">
-    <i class="fas fa-file-pdf"></i>
-  </a>
+        <i class="fas fa-file-pdf"></i>
+    </a>
 
-  <a href="https://dmitryne.wixsite.com/english/acoustic-guitar-modern-baroque-music-collection"
+    <!-- Floating music button -->
+    <a href="https://dmitryne.wixsite.com/english/acoustic-guitar-modern-baroque-music-collection"
      class="floating-btn floating-music" target="_blank" title="Музыка">
-    <i class="fas fa-music"></i>
-  </a>
-
+        <i class="fas fa-music"></i>
+    </a>
     
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -959,4 +976,4 @@
         });
     </script>
 </body>
-</html> i cant see floating buttons can you fix it
+</html>
